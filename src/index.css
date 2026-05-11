@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,700;1,700&family=Dancing+Script:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --color-olive-50: #f4f6f0;
+  --color-olive-100: #e5e9d9;
+  --color-olive-200: #ccd6b3;
+  --color-olive-300: #abbb86;
+  --color-olive-400: #889c5b;
+  --color-olive-500: #6b7d42;
+  --color-olive-600: #556334;
+  --color-olive-700: #424d29;
+  --color-olive-800: #353d22;
+  --color-olive-900: #2c331d;
+  --color-olive-950: #171b0f;
+
+  /* Explicitly define grays as hex to avoid color parsing errors in legacy engines */
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+}
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+}
+
+.font-handwriting {
+  font-family: 'Dancing Script', cursive;
+}
+
+/* Optimized Print Engine Support */
+@media print {
+  /* Hide UI elements */
+  nav, footer, .no-print, button, form, .input-group {
+    display: none !important;
+  }
+
+  body, #root, main {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+  }
+
+  /* Force display of preview content during print */
+  .xl\:block {
+    display: block !important;
+  }
+
+  /* Target specific document containers */
+  #printable-cn-content,
+  #printable-pod-content,
+  #pdf-invoice-content,
+  .invoice-container {
+    display: block !important;
+    position: static !important;
+    width: 210mm !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    padding: 15mm !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: white !important;
+  }
+
+  /* Table fidelity */
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+
+  tr {
+    page-break-inside: avoid !important;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
